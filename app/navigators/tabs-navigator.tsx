@@ -85,6 +85,7 @@ export const TabsNavigator = () => {
                     keyboardHidesTabBar: true,
                     tabBarStyle: {
                         backgroundColor: '#15214A',
+                        paddingTop: 20
                     },
                     tabBarItemStyle: {
                         backgroundColor: '#15214A'

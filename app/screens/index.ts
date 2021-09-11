@@ -4,3 +4,4 @@ export * from "./demo/demo-list-screen"
 export * from './auth/login-screen'
 export * from './auth/register-screen'
 export * from './auth/verify-screen'
+export * from './analytics'

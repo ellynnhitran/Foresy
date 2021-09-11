@@ -18,6 +18,7 @@ import { Provider } from 'react-redux';
 import * as storage from "./utils/storage"
 import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence } from "./navigators"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
+import { NativeBaseProvider, Box } from 'native-base';
 
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
@@ -58,12 +59,14 @@ function App() {
   return (
     <ToggleStorybook>
       <Provider store={store}>
+      <NativeBaseProvider>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <AppNavigator
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
           />
         </SafeAreaProvider>
+        </NativeBaseProvider>
       </Provider>
     </ToggleStorybook>
   )

@@ -5,12 +5,13 @@
  * and a "main" flow which the user will use once logged in.
  */
 import React from "react"
-import { useColorScheme, StatusBar } from "react-native"
+import { useColorScheme, StatusBar, SafeAreaView } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
 import { navigationRef } from "./navigation-utilities"
 import { AuthNavigator } from './auth-navigator'
+import { MainNavigator } from './main-navigator'
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -28,7 +29,8 @@ export type AppNavigatorParamList = {
   welcome: undefined
   demo: undefined
   demoList: undefined,
-  AuthNavigator: undefined
+  AuthNavigator: undefined,
+  MainNavigator: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -40,11 +42,12 @@ const AppStack = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="AuthNavigator"
+      initialRouteName="MainNavigator"
     >
-      <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
-      {/* <Stack.Screen name="demo" component={DemoScreen} />
-      <Stack.Screen name="demoList" component={DemoListScreen} /> */}
+      {/* <Stack.Screen name="AuthNavigator" component={AuthNavigator} /> */}
+      <Stack.Screen name="MainNavigator" component={MainNavigator} />
+
+
     </Stack.Navigator>
   )
 }
@@ -55,9 +58,9 @@ export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme()
   return (
     <>
-      <StatusBar
-        barStyle='light-content'
-      />
+
+     
+
       <NavigationContainer
         ref={navigationRef}
         theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
@@ -65,6 +68,7 @@ export const AppNavigator = (props: NavigationProps) => {
       >
         <AppStack />
       </NavigationContainer>
+
     </>
   )
 }

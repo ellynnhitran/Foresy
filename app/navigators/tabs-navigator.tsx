@@ -6,7 +6,7 @@
  */
 import React from "react"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Image, Animated, Easing, StyleSheet, View } from 'react-native';
+import { Image, Animated, Easing, StyleSheet, Platform } from 'react-native';
 import { TransitionSpec } from '@react-navigation/stack/src/types';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 
@@ -85,7 +85,8 @@ export const TabsNavigator = () => {
                     keyboardHidesTabBar: true,
                     tabBarStyle: {
                         backgroundColor: '#15214A',
-                        paddingTop: 20
+                        paddingTop: Platform.OS == "ios"?10:0,
+                        height: Platform.OS == "ios"?80:60
                     },
                     tabBarItemStyle: {
                         backgroundColor: '#15214A'

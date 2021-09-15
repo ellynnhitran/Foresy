@@ -1,2 +1,20 @@
-# Foresy
-AI high-tech glasses combined with biosensors to automatically monitor users’ health in real time over the long-term, automatically send support requests in emergency situations in order to reduce risks of complication and death from medical problems.
+# Foresy APIs
+
+### APIs Documents
+```
+endpoint: https://foresy-apis-sensor.herokuapp.com
+headers: {
+    "Content-Type": "application/json
+}
+
+```
+* `POST` /sensor/heart-rate/create
+
+    ```json
+    {
+        "device_id": "123", // string
+        "value": 12, // number
+        "timestamp": 1631729973 // number
+    }
+    ```
+* `GET` /sensor/heart-rate/list

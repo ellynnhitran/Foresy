@@ -14,4 +14,5 @@ shutil.rmtree('android/build', ignore_errors=True)
 os.system("git add .")
 os.system("""git commit -m " """+date_time+""" """+msg+""" " """)
 os.system("git push origin master")
+os.system("git push foresy master")
 

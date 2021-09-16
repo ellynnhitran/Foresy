@@ -6,12 +6,14 @@
  */
 import React from "react"
 import { useColorScheme, StatusBar, SafeAreaView } from "react-native"
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
+import { NavigationContainer, DefaultTheme, DarkTheme, NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
 import { navigationRef } from "./navigation-utilities"
 import { AuthNavigator } from './auth-navigator'
-import { MainNavigator } from './main-navigator'
+import { MainNavigator, MainNavigatorParamList } from './main-navigator'
+import { useAppSelector } from "@store/hook"
+
+
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -26,27 +28,33 @@ import { MainNavigator } from './main-navigator'
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
 export type AppNavigatorParamList = {
-  welcome: undefined
-  demo: undefined
-  demoList: undefined,
   AuthNavigator: undefined,
-  MainNavigator: undefined
+  MainNavigator: NavigatorScreenParams<MainNavigatorParamList>
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<AppNavigatorParamList>()
 
 const AppStack = () => {
+
+  const { auth_login } = useAppSelector(state => state.AuthReducer)
+
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="MainNavigator"
+      initialRouteName="AuthNavigator"
     >
-      {/* <Stack.Screen name="AuthNavigator" component={AuthNavigator} /> */}
-      <Stack.Screen name="MainNavigator" component={MainNavigator} />
+      {
+        auth_login ? (
+          <Stack.Screen name="MainNavigator" component={MainNavigator} />
 
+        ) : (
+          <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
+        )
+      }
 
     </Stack.Navigator>
   )
@@ -59,7 +67,7 @@ export const AppNavigator = (props: NavigationProps) => {
   return (
     <>
 
-     
+      <StatusBar barStyle="light-content"/>
 
       <NavigationContainer
         ref={navigationRef}

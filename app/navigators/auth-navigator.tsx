@@ -54,7 +54,7 @@ export const AuthNavigator = () => {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName="VerifyScreen"
+            initialRouteName="LoginScreen"
         >
             {
                 screens.map((screen)=>{

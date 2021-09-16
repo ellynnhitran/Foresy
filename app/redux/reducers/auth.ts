@@ -12,7 +12,7 @@ export const userState: UserState = {
 }
 
 
-const Notification = (state = userState, action: ActionCustom) => {
+export const AuthReducer = (state = userState, action: ActionCustom) => {
     switch (action.type) {
 
         case AuthType.AUTH_LOGIN:
@@ -22,5 +22,3 @@ const Notification = (state = userState, action: ActionCustom) => {
             return state
     }
 }
-
-export default Notification;

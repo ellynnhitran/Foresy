@@ -13,10 +13,13 @@ import { fontCustom } from '@theme/fonts'
 import { FontSizeText } from '@theme/size'
 import AuthLayout from '@components/layouts/auth-layout';
 import { StackNavigationProp } from '@react-navigation/stack';
+import {AppNavigatorParamList} from '@navigators/app-navigator'
+import {AuthNavigatorParamList} from '@navigators/auth-navigator'
+import {AuthActions} from '@actions/auth'
 
 
 interface Props{
-    navigation: StackNavigationProp<any>
+    navigation: StackNavigationProp<AuthNavigatorParamList>
 }
 
 
@@ -57,8 +60,10 @@ export function LoginScreen(props: Props) {
             </View>
 
             {/* button */}
-            <TouchableOpacity style={styles.button} >
-                <Text style={{ color: '#fff', fontFamily: fontCustom.regular, fontSize: FontSizeText(18), fontWeight: 'bold', textTransform: 'uppercase' }}>Đăng nhập</Text>
+            <TouchableOpacity onPress={()=>AuthActions.login()} style={styles.button} >
+                <Text style={{ color: '#fff', fontFamily: fontCustom.regular, fontSize: FontSizeText(18), fontWeight: 'bold', textTransform: 'uppercase' }}>
+                    Đăng nhập
+                </Text>
             </TouchableOpacity>
 
             <View style={{ width: '100%', marginTop: 15, flexDirection: 'row', justifyContent: 'center' }}>

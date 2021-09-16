@@ -3,17 +3,24 @@ import React, { Fragment } from "react"
 import { StatusBar, SafeAreaView , View} from 'react-native'
 import { createStackNavigator } from "@react-navigation/stack"
 // import { useAppSelector } from '@redux-hook/'
+import {TabStackParamList} from './tabs-navigator'
+import {NavigatorScreenParams} from "@react-navigation/native"
 
 // Screens
 import {
-    LoginScreen,
+    AccountScreen,
+    GlassesScreen,
+    InboxScreen
 } from '../screens'
 
 import { TabsNavigator } from './tabs-navigator'
 
 
 export type MainNavigatorParamList = {
-    TabsNavigator: undefined,
+    TabsNavigator: NavigatorScreenParams<TabStackParamList>,
+    AccountScreen: undefined,
+    GlassesScreen: undefined,
+    InboxScreen: undefined,
 }
 
 
@@ -31,6 +38,19 @@ const screens: Screens[] = [
         name: 'TabsNavigator',
         component: TabsNavigator
     },
+    {
+        name: "AccountScreen",
+        component: AccountScreen
+    },
+    {
+        name: "GlassesScreen",
+        component: GlassesScreen
+    },
+    {
+        name: "InboxScreen",
+        component: InboxScreen
+    }
+    
 ]
 
 

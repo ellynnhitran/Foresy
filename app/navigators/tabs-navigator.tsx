@@ -12,10 +12,13 @@ import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 
 // theme
 import { FontSizeText } from '@theme/size'
+import {Img} from "@images"
 
 // screens
 import {
-    AnlyticsScreen
+    AnlyticsScreen,
+    ProfileScreen,
+    FriendScreen
 } from "../screens"
 
 
@@ -51,6 +54,27 @@ const Tab = createBottomTabNavigator();
 
 const Screens = [
     {
+        name: 'FriendScreen',
+        component: FriendScreen,
+        options: {
+            ...optionsScreen,
+            tabBarLabel: () => null,
+            tabBarIcon: ({ focused, color }) => (
+                focused ? <Image
+                    source={Img.tabFriendActive}
+                    style={{ width: 30, height: 30 * 138 / 100 }}
+                />
+                    :
+                    <Image
+                        source={Img.tabFriendDeactive}
+                        style={{ width: 30, height: 30 }}
+                    />
+            ),
+
+        },
+    },
+
+    {
         name: 'AnlyticsScreen',
         component: AnlyticsScreen,
         options: {
@@ -70,7 +94,27 @@ const Screens = [
 
         },
     },
+    {
+        name: 'ProfileScreen',
+        component: ProfileScreen,
+        options: {
+            ...optionsScreen,
+            tabBarLabel: () => null,
+            tabBarIcon: ({ focused, color }) => (
+                focused ? <Image
+                    source={Img.tabProfileActive}
+                    style={{ width: 30, height: 30 * 138 / 100 }}
+                />
+                    :
+                    <Image
+                        source={Img.tabProfileDeactive}
+                        style={{ width: 30, height: 30 }}
+                    />
+            ),
 
+        },
+    },
+   
 ]
 
 
@@ -93,6 +137,7 @@ export const TabsNavigator = () => {
                     }
 
                 })}
+                initialRouteName="AnlyticsScreen"
             >
                 {
                     Screens.map((screen) => (

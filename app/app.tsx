@@ -57,7 +57,6 @@ function App() {
 
   // otherwise, we're ready to render the app
   return (
-    <ToggleStorybook>
       <Provider store={store}>
       <NativeBaseProvider>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
@@ -68,7 +67,6 @@ function App() {
         </SafeAreaProvider>
         </NativeBaseProvider>
       </Provider>
-    </ToggleStorybook>
   )
 }
 

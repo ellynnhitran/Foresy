@@ -21,6 +21,7 @@ module.exports = {
           "@utils": "./app/utils",
           "@navigators": "./app/navigators",
           "@apis": "./app/apis",
+          "@images": "./app/assets/images.ts",
         }
       }
     ],

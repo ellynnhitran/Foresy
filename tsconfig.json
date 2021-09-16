@@ -50,6 +50,9 @@
       "@apis/*": [
         "./app/apis/*"
       ],
+      "@images":[
+        "./app/assets/images.ts"
+      ]
     },
   },
   "exclude": ["node_modules"],

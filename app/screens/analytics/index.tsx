@@ -221,12 +221,12 @@ export function AnlyticsScreen() {
                     <View style={{ marginTop: 17 }}></View>
                     <Flex direction="row" align="center" p="3" style={{ width: "100%", backgroundColor: "#82C572", height: 40, borderRadius: 5 }}>
                         <IconTimeClock color="white" />
-                        <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10 }}>Thiết lập lối sống theo khoa học</Text>
+                        <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Thiết lập lối sống theo khoa học</Text>
                     </Flex>
                     <View style={{ marginTop: 10 }}></View>
                     <Flex direction="row" align="center" p="3" style={{ width: "100%", backgroundColor: "#82C572", height: 40, borderRadius: 5 }}>
                         <IconBookReadme color="white" />
-                        <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10 }}>Tạo hồ sơ bệnh án</Text>
+                        <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Tạo hồ sơ bệnh án</Text>
                     </Flex>
                 </Box>
 

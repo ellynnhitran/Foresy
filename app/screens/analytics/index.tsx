@@ -27,9 +27,18 @@ import BoxProgressLine from '@components/box/progress-line';
 import IconTimeClock from '@components/icon/time-clock';
 import IconBookReadme from '@components/icon/book-readme';
 import { color } from '@theme/color';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainNavigatorParamList } from '@navigators/main-navigator'
 
 
-export function AnlyticsScreen() {
+
+interface Props {
+    navigation: StackNavigationProp<MainNavigatorParamList>
+}
+
+
+
+export function AnlyticsScreen(props: Props) {
 
     const [_fill, set_fill] = useState(85)
 
@@ -224,10 +233,12 @@ export function AnlyticsScreen() {
                         <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Thiết lập lối sống theo khoa học</Text>
                     </Flex>
                     <View style={{ marginTop: 10 }}></View>
+                    <TouchableOpacity onPress={()=> props.navigation.navigate('MedicalRecordScreen')} activeOpacity={1} >
                     <Flex direction="row" align="center" p="3" style={{ width: "100%", backgroundColor: "#82C572", height: 40, borderRadius: 5 }}>
                         <IconBookReadme color="white" />
                         <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Tạo hồ sơ bệnh án</Text>
                     </Flex>
+                    </TouchableOpacity>
                 </Box>
 
                 <View style={{ marginTop: 30 }}></View>

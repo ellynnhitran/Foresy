@@ -10,7 +10,9 @@ import {NavigatorScreenParams} from "@react-navigation/native"
 import {
     AccountScreen,
     GlassesScreen,
-    InboxScreen
+    InboxScreen,
+    MedicalRecordScreen,
+    MedicalScheduleScreen
 } from '../screens'
 
 import { TabsNavigator } from './tabs-navigator'
@@ -21,6 +23,8 @@ export type MainNavigatorParamList = {
     AccountScreen: undefined,
     GlassesScreen: undefined,
     InboxScreen: undefined,
+    MedicalRecordScreen: undefined,
+    MedicalScheduleScreen: undefined
 }
 
 
@@ -49,6 +53,14 @@ const screens: Screens[] = [
     {
         name: "InboxScreen",
         component: InboxScreen
+    },
+    {
+        name: 'MedicalRecordScreen',
+        component: MedicalRecordScreen
+    },
+    {
+        name: "MedicalScheduleScreen",
+        component: MedicalScheduleScreen
     }
     
 ]

@@ -48,16 +48,17 @@ if (pulseSensor.sawStartOfBeat()) {            // Constantly test to see if "a b
  Serial.println("♥  A HeartBeat Happened ! "); // If test is "true", print a message "a heartbeat happened".
  Serial.print("BPM: ");                        // Print phrase "BPM: " 
  Serial.println(myBPM);                        // Print the value inside of myBPM. 
-}
-
-
-StaticJsonBuffer<200> jsonBuffer;
+ StaticJsonBuffer<200> jsonBuffer;
 JsonObject& data = jsonBuffer.createObject();
   data["device_id"] = "123";
   data["timestamp"] = 12456778;
   data["value"] = myBPM;
 
   Serial.println(data);   
+}
+
+
+
 
   delay(1000);                    // considered best practice in a simple sketch.
 

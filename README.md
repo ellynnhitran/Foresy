@@ -18,3 +18,4 @@ headers: {
     }
     ```
 * `GET` /sensor/heart-rate/list
+* `GET` /sensor/heart-rate/latest

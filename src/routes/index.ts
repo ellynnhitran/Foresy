@@ -28,6 +28,8 @@ const heartRouter = Router();
 const heartRateController = new HeartRateController();
 heartRouter.post('/create', heartRateController.create.bind(heartRateController));
 heartRouter.get('/list', heartRateController.list.bind(heartRateController));
+heartRouter.get('/latest', heartRateController.latest.bind(heartRateController));
+
 
 
 

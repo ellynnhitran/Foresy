@@ -29,4 +29,9 @@ export default class UserService{
         return item
     }
 
+    async findLatest(): Promise<HeartRate>{
+        let item: HeartRate = await this.userModel.find({}).sort({_id: -1}).limit(1)
+        return item
+    }
+
 }

@@ -45,4 +45,15 @@ export default class HeartRateController {
             return res.status(BAD_GATEWAY).send({message: err})
         }
     }
+
+    async latest(req: Request, res: Response){
+        try{
+            let heartRate: HeartRate = await this.heartRateService.findLatest();
+            return res.status(OK).send({data: heartRate});
+        }
+        catch(err){
+            console.log(err)
+            return res.status(BAD_GATEWAY).send({message: err})
+        }
+    }
 }

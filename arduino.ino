@@ -79,10 +79,10 @@ void loop()
   {
 
     Serial.print("Error on sending POST: ");
-    Serial.println(httpResponseCode);
+    // Serial.println(httpResponseCode);
   }
 
-  http.end(); //Free resources
+  // http.end(); //Free resources
 }
 else
 {

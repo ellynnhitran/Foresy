@@ -82,35 +82,37 @@ export function MedicalRecordScreen(props: Props) {
                         trackColor={{ false: "#E5E5E5", true: "#FF9B70" }}
                         thumbColor={_statusSwitch ? "#fff" : "#fff"}
                         ios_backgroundColor="#E5E5E5"
-                        onValueChange={(value)=>set_statusSwitch(value)}
+                        onValueChange={(value) => set_statusSwitch(value)}
                         value={_statusSwitch}
                     />
                 </Flex>
 
-                <View style={{marginTop: 50}}></View>
+                <View style={{ marginTop: 50 }}></View>
 
-                <TouchableOpacity activeOpacity={0.8} onPress={()=> props.navigation.navigate('MedicalScheduleScreen')}>
-                <Flex direction="row" justify="space-between" align="center">
-                    <Text style={{...styles.textDefault, color: "white", fontSize: FontSizeText(17)}}>
-                        Lịch trình khám sức khoẻ
-                    </Text>
-                    <FontAwesomeIcon icon={faChevronRight} size={20} color="white" />
-                </Flex>
+                <TouchableOpacity activeOpacity={0.8} onPress={() => props.navigation.navigate('MedicalScheduleScreen')}>
+                    <Flex direction="row" justify="space-between" align="center">
+                        <Text style={{ ...styles.textDefault, color: "white", fontSize: FontSizeText(17) }}>
+                            Lịch trình khám sức khoẻ
+                        </Text>
+                        <FontAwesomeIcon icon={faChevronRight} size={20} color="white" />
+                    </Flex>
                 </TouchableOpacity>
 
-                <View style={{marginTop: 25, marginBottom: 25, height: 1, width: '100%', backgroundColor: "#4C5678"}}></View>
+                <View style={{ marginTop: 25, marginBottom: 25, height: 1, width: '100%', backgroundColor: "#4C5678" }}></View>
+
+                <TouchableOpacity activeOpacity={0.8} onPress={() => props.navigation.navigate('ConnectHospitalScreen')} >
+                    <Flex direction="row" justify="space-between" align="center">
+                        <Text style={{ ...styles.textDefault, color: "white", fontSize: FontSizeText(17) }}>
+                            Kết nối dữ liệu với bệnh viện
+                        </Text>
+                        <FontAwesomeIcon icon={faChevronRight} size={20} color="white" />
+                    </Flex>
+                </TouchableOpacity>
+
+                <View style={{ marginTop: 25, marginBottom: 25, height: 1, width: '100%', backgroundColor: "#4C5678" }}></View>
 
                 <Flex direction="row" justify="space-between" align="center">
-                    <Text style={{...styles.textDefault, color: "white", fontSize: FontSizeText(17)}}>
-                        Kết nối dữ liệu với bệnh viện
-                    </Text>
-                    <FontAwesomeIcon icon={faChevronRight} size={20} color="white" />
-                </Flex>
-
-                <View style={{marginTop: 25, marginBottom: 25, height: 1, width: '100%', backgroundColor: "#4C5678"}}></View>
-
-                <Flex direction="row" justify="space-between" align="center">
-                    <Text style={{...styles.textDefault, color: "white", fontSize: FontSizeText(17)}}>
+                    <Text style={{ ...styles.textDefault, color: "white", fontSize: FontSizeText(17) }}>
                         Thông tin sức khoẻ chi tiết
                     </Text>
                     <FontAwesomeIcon icon={faChevronRight} size={20} color="white" />

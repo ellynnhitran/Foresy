@@ -61,14 +61,20 @@ export function FriendScreen(props: Props) {
                                 <Flex direction="row" align="center">
                                     <Image source={require('../../../assets/images/avatar.jpeg')} alt="avatar" borderRadius={100} size={65} />
                                     <View style={{ marginLeft: 15 }}>
-                                        <Text style={{ ...styles.textDefault, color: "#fff", fontSize: FontSizeText(20), fontWeight: '600' }}>Karen Castillo</Text>
+                                        <Text style={{ ...styles.textDefault, color: "#fff", fontSize: FontSizeText(20), fontWeight: '600' }}>Phương Nhi</Text>
                                         <View style={{ marginBottom: 5 }}></View>
                                         <Text style={{ ...styles.textDefault, color: "#ffffff80", fontSize: FontSizeText(14), fontWeight: '600' }}>
                                             You: hello World
                                         </Text>
                                     </View>
                                 </Flex>
-                                <IconReaded color="#43474D" />
+                                {
+                                    value%2==0?(
+                                        <IconReaded color="#43474D" />
+                                    ):(
+                                        <IconNoRead color="#43474D" />
+                                    )
+                                }
                             </Flex>
                         </TouchableOpacity>
                     ))

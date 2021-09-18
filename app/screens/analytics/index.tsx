@@ -29,6 +29,7 @@ import IconBookReadme from '@components/icon/book-readme';
 import { color } from '@theme/color';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainNavigatorParamList } from '@navigators/main-navigator'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 
 
@@ -41,12 +42,13 @@ interface Props {
 export function AnlyticsScreen(props: Props) {
 
     const [_fill, set_fill] = useState(85)
+    const insets = useSafeAreaInsets()
 
 
     return (
-        <SafeAreaView style={styles.container}>
-
-            <ScrollView style={styles.container_padding}>
+        <View style={styles.container}>
+            <View style={{ marginTop: insets.top }}></View>
+            <ScrollView showsVerticalScrollIndicator={false}>
 
                 <Center>
                     <Image source={require('@assets/images/logo.png')} style={{ width: 200, height: 90 * 200 / 300 }} />
@@ -233,11 +235,11 @@ export function AnlyticsScreen(props: Props) {
                         <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Thiết lập lối sống theo khoa học</Text>
                     </Flex>
                     <View style={{ marginTop: 10 }}></View>
-                    <TouchableOpacity onPress={()=> props.navigation.navigate('MedicalRecordScreen')} activeOpacity={1} >
-                    <Flex direction="row" align="center" p="3" style={{ width: "100%", backgroundColor: "#82C572", height: 40, borderRadius: 5 }}>
-                        <IconBookReadme color="white" />
-                        <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Tạo hồ sơ bệnh án</Text>
-                    </Flex>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('MedicalRecordScreen')} activeOpacity={1} >
+                        <Flex direction="row" align="center" p="3" style={{ width: "100%", backgroundColor: "#82C572", height: 40, borderRadius: 5 }}>
+                            <IconBookReadme color="white" />
+                            <Text style={{ ...styles.textTitle, color: "#fff", marginLeft: 10, textTransform: 'none' }}>Tạo hồ sơ bệnh án</Text>
+                        </Flex>
                     </TouchableOpacity>
                 </Box>
 
@@ -267,7 +269,7 @@ export function AnlyticsScreen(props: Props) {
 
                     <View style={{ marginTop: 15 }}></View>
 
-                    <ScrollView horizontal={true} style={{paddingBottom: 10}}>
+                    <ScrollView horizontal={true} style={{ paddingBottom: 10 }}>
                         <View style={{ marginLeft: 10 }}></View>
                         <Flex align="center" justify="space-between" style={{ width: 140, height: 95 }}>
                             <Image source={require("@assets/images/meal-1.png")} style={{ width: 120, height: 70, borderRadius: 5 }} />
@@ -301,6 +303,6 @@ export function AnlyticsScreen(props: Props) {
 
 
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }

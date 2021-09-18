@@ -12,7 +12,8 @@ import {
     GlassesScreen,
     InboxScreen,
     MedicalRecordScreen,
-    MedicalScheduleScreen
+    MedicalScheduleScreen,
+    ConnectHospitalScreen
 } from '../screens'
 
 import { TabsNavigator } from './tabs-navigator'
@@ -24,7 +25,8 @@ export type MainNavigatorParamList = {
     GlassesScreen: undefined,
     InboxScreen: undefined,
     MedicalRecordScreen: undefined,
-    MedicalScheduleScreen: undefined
+    MedicalScheduleScreen: undefined,
+    ConnectHospitalScreen: undefined,
 }
 
 
@@ -61,6 +63,10 @@ const screens: Screens[] = [
     {
         name: "MedicalScheduleScreen",
         component: MedicalScheduleScreen
+    },
+    {
+        name: 'ConnectHospitalScreen',
+        component: ConnectHospitalScreen
     }
     
 ]

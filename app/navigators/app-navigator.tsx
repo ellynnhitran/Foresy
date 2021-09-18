@@ -67,7 +67,7 @@ export const AppNavigator = (props: NavigationProps) => {
   return (
     <>
 
-      <StatusBar barStyle="light-content"/>
+      <StatusBar barStyle="light-content" />
 
       <NavigationContainer
         ref={navigationRef}

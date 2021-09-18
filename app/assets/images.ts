@@ -12,6 +12,7 @@ interface ImageSource {
     tabFriendActive: {uri: string},
     tabFriendDeactive: {uri: string},
     glassesDevice: {uri: string},
+    iconForesy: {uri: string},
 }
 
 export const Img: ImageSource = {
@@ -26,5 +27,6 @@ export const Img: ImageSource = {
     iconSettingLogout: require('../../assets/images/icon-setting-logout.png'),
     tabFriendActive: require('../../assets/images/tab-friend-active.png'),
     tabFriendDeactive: require('../../assets/images/tab-friend-deactive.png'),
-    glassesDevice: require('../../assets/images/glasses-device.png')
+    glassesDevice: require('../../assets/images/glasses-device.png'),
+    iconForesy: require('../../assets/images/icon-foresy.png'),
 };

@@ -25,7 +25,8 @@ void loop()
 {
 
   if (WiFi.status() == WL_CONNECTED)
-  { //Check WiFi connection status
+  {
+    //Check WiFi connection status
 
     //  HTTPClient http;
 
@@ -75,20 +76,20 @@ void loop()
     Serial.println(JSONmessageBuffer);
     Serial.println();
   }
+  // else
+  // {
+
+  //   Serial.print("Error on sending POST: ");
+  //   // Serial.println(httpResponseCode);
+  // }
+
+  // http.end(); //Free resources
+
   else
   {
 
-    Serial.print("Error on sending POST: ");
-    // Serial.println(httpResponseCode);
+    Serial.println("Error in WiFi connection");
   }
 
-  // http.end(); //Free resources
-}
-else
-{
-
-  Serial.println("Error in WiFi connection");
-}
-
-delay(10000); //Send a request every 10 seconds
+  delay(10000); //Send a request every 10 seconds
 }

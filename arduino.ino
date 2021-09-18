@@ -1,66 +1,58 @@
-/*  Getting_BPM_to_Monitor prints the BPM to the Serial Monitor, using the least lines of code and PulseSensor Library.
- *  Tutorial Webpage: https://pulsesensor.com/pages/getting-advanced
- *
---------Use This Sketch To------------------------------------------
-1) Displays user's live and changing BPM, Beats Per Minute, in Arduino's native Serial Monitor.
-2) Print: "♥  A HeartBeat Happened !" when a beat is detected, live.
-2) Learn about using a PulseSensor Library "Object".
-4) Blinks LED on PIN 13 with user's Heartbeat.
---------------------------------------------------------------------*/
-
-#define USE_ARDUINO_INTERRUPTS true // Set-up low-level interrupts for most acurate BPM math.
-#include <PulseSensorPlayground.h>  // Includes the PulseSensorPlayground Library.
-#include <ArduinoJson.h>
-
-//  Variables
-const int PulseWire = 0; // PulseSensor PURPLE WIRE connected to ANALOG PIN 0
-const int LED13 = 13;    // The on-board Arduino LED, close to PIN 13.
-int Threshold = 550;     // Determine which Signal to "count as a beat" and which to ignore.
-                         // Use the "Gettting Started Project" to fine-tune Threshold Value beyond default setting.
-                         // Otherwise leave the default "550" value.
-
-PulseSensorPlayground pulseSensor; // Creates an instance of the PulseSensorPlayground object called "pulseSensor"
-
-void setup()
-{
-
-  Serial.begin(9600); // For Serial Monitor
-
-  // Configure the PulseSensor object, by assigning our variables to it.
-  pulseSensor.analogInput(PulseWire);
-  pulseSensor.blinkOnPulse(LED13); //auto-magically blink Arduino's LED with heartbeat.
-  pulseSensor.setThreshold(Threshold);
-
-  // Double-check the "pulseSensor" object was created and "began" seeing a signal.
-  if (pulseSensor.begin())
-  {
-    Serial.println("We created a pulseSensor Object !"); //This prints one time at Arduino power-up,  or on Arduino reset.
+#include <WiFi.h>
+#include <HTTPClient.h>
+  
+const char* ssid = "yourNetworkName";
+const char* password =  "yourNetworkPassword";
+  
+void setup() {
+  
+  Serial.begin(115200);
+  delay(4000);   //Delay needed before calling the WiFi.begin
+  
+  WiFi.begin(ssid, password); 
+  
+  while (WiFi.status() != WL_CONNECTED) { //Check for the connection
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
   }
+  
+  Serial.println("Connected to the WiFi network");
+  
 }
-
-void loop()
-{
-
-  int myBPM = pulseSensor.getBeatsPerMinute(); // Calls function on our pulseSensor object that returns BPM as an "int".
-                                               // "myBPM" hold this BPM value now.
-
-  if (pulseSensor.sawStartOfBeat())
-  {                                               // Constantly test to see if "a beat happened".
-    Serial.println("♥  A HeartBeat Happened ! "); // If test is "true", print a message "a heartbeat happened".
-    Serial.print("BPM: ");                        // Print phrase "BPM: "
-    Serial.println(myBPM);                        // Print the value inside of myBPM.
-    StaticJsonBuffer<200> jsonBuffer;
-    JsonObject &root = jsonBuffer.createObject();
-    root["device_id"] = "123";
-    root["timestamp"] = 12456778;
-    root["value"] = myBPM;
-
-    JsonObject &data = root.createNestedObject("data");
-    data.set("temperature", "30.1");
-    data.set("humidity", "70.1");
-
-    root.printTo(Serial);
-  }
-
-  delay(1000); // considered best practice in a simple sketch.
+  
+void loop() {
+  
+ if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
+  
+   HTTPClient http;   
+  
+   http.begin("https://foresy-apis-sensor.herokuapp.com/sensor/heart-rate/create");  //Specify destination for HTTP request
+   http.addHeader("Content-Type", "application/json");             //Specify content-type header
+  
+   int httpResponseCode = http.POST("{\"device_id\":\"bb789020-1653-11ec-9c42-bb601b2bea72\",\"value\":\"70\",\"timestamp\":\"163456789\"}");   //Send the actual POST request
+  
+   if(httpResponseCode>0){
+  
+    String response = http.getString();                       //Get the response to the request
+  
+    Serial.println(httpResponseCode);   //Print return code
+    Serial.println(response);           //Print request answer
+  
+   }else{
+  
+    Serial.print("Error on sending POST: ");
+    Serial.println(httpResponseCode);
+  
+   }
+  
+   http.end();  //Free resources
+  
+ }else{
+  
+    Serial.println("Error in WiFi connection");   
+  
+ }
+  
+  delay(10000);  //Send a request every 10 seconds
+  
 }

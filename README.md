@@ -3,4 +3,4 @@ AI high-tech glasses combined with biosensors to automatically monitor users’ 
 
 Our Github has 2 main branches:
 1. Branch "app": https://github.com/ellynnhitran/Foresy/tree/app (Operations of Foresy App).
-2. Branch "sensors_apis": https://github.com/ellynnhitran/Foresy/blob/sensor-apis/README.md (Manage the activities of Bio-sensors).
+2. Branch "sensors_apis": https://github.com/ellynnhitran/Foresy/blob/sensor-apis/README.md (Foresy APIs mana the activities of Bio-sensors).

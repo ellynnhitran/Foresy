@@ -157,7 +157,7 @@ export function AnlyticsScreen(props: Props) {
 
                 <Flex direction="row" justify="space-between">
                     <BoxProgressLine
-                        title="Nhịp tim"
+                        title="Thời gian ngủ"
                         value={6.5}
                         unit="giờ/ngày"
                         progress={90}

@@ -55,7 +55,7 @@ export function FriendScreen(props: Props) {
 
             <ScrollView style={{ ...styles.container_padding }}>
                 {
-                    [1, 2, 3, 4, 5, 6, 7, 8, 9].map((value: number) => (
+                    [1].map((value: number) => (
                         <TouchableOpacity key={value} onPress={() => props.navigation.navigate("InboxScreen")} activeOpacity={0.9} style={{marginTop: 30}}>
                             <Flex direction="row" justify="space-between" align="center">
                                 <Flex direction="row" align="center">

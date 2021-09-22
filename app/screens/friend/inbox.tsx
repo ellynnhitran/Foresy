@@ -50,7 +50,7 @@ export function InboxScreen(props: Props) {
     const dataChat = [
         {
             type: "me",
-            text: ["Hello phương nhi, b khoẻ chứ ?"]
+            text: ["Hello Phương Nhi, b khoẻ chứ ?"]
         },
         {
             type: "you",
@@ -62,7 +62,7 @@ export function InboxScreen(props: Props) {
         },
         {
             type: "me",
-            text: ["Tối nay mình đi ăn nhé"]
+            text: ["Tối nay mình đi ăn nhé", "Bạn muốn ăn gì?"]
         },
         {
             type: "you",
